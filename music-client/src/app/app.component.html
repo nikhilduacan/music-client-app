@@ -1,0 +1,62 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <h1>Welcome to Music App</h1>
+</div>
+
+<div class="music-table-container">
+  <mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    matSort
+    matSortActive="artistName"
+    matSortDirection="asc"
+    matSortDisableClear
+  >
+    <!-- Artist name-->
+    <ng-container matColumnDef="artistName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Artist Name</mat-header-cell
+      >
+      <mat-cell *matCellDef="let record">{{ record.artistName }}</mat-cell>
+    </ng-container>
+
+    <!-- Album name-->
+    <ng-container matColumnDef="albumName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Album Name</mat-header-cell
+      >
+      <mat-cell *matCellDef="let record">{{ record.albumName }}</mat-cell>
+    </ng-container>
+
+    <!-- Year released-->
+    <ng-container matColumnDef="yearReleased">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Year Released</mat-header-cell
+      >
+      <mat-cell *matCellDef="let record">{{ record.yearReleased }}</mat-cell>
+    </ng-container>
+
+    <!-- Track number-->
+    <ng-container matColumnDef="songTrack">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Song Track#</mat-header-cell
+      >
+      <mat-cell *matCellDef="let record">{{ record.songTrack }}</mat-cell>
+    </ng-container>
+
+    <!-- Song name -->
+    <ng-container matColumnDef="songName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Song Name</mat-header-cell
+      >
+      <mat-cell *matCellDef="let record">{{ record.songName }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="numberOfMusicRecords" [pageSize]="10"></mat-paginator>
+</div>
+
+<router-outlet></router-outlet>
